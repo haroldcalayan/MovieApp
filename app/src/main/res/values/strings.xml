@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">MovieApp</string>
+    <string name="app_name">Movie App</string>
+
+    <!-- Main -->
+    <string name="main_movie_header">Movie</string>
+    <!-- Movie Item Adapter -->
+    <string name="movie_duration_and_genre">%1$s - %2$s</string>
 </resources>
