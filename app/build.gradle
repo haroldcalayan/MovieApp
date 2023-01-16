@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
+apply from: "dependencies.gradle"
 
 android {
     compileSdk 33
@@ -29,15 +32,72 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    // Kotlin
+    implementation kotlinStdLib
+    implementation kotlinXCoroutine
+
+    // AndroidX
+    implementation androidXDependencies.activityKTX
+    implementation androidXDependencies.annotation
+    implementation androidXDependencies.appCompat
+    implementation androidXDependencies.constraintLayout
+    implementation androidXDependencies.coreKTX
+    implementation androidXDependencies.lifecycleExtension
+    implementation androidXDependencies.lifecycleLiveDataKTX
+    implementation androidXDependencies.lifecycleRuntimeKTX
+    implementation androidXDependencies.lifecycleViewModelKTX
+    implementation androidXDependencies.recyclerView
+    implementation androidXDependencies.roomKTX
+    implementation androidXDependencies.roomRuntime
+    implementation androidXDependencies.roomRxJava2
+    implementation androidXDependencies.sqlite
+    kapt androidXDependencies.roomCompiler
+
+    // Google
+    implementation googleDependencies.material
+
+    // Retrofit
+    implementation retrofitDependencies.adapterRxJava2
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.converterGson
+    implementation retrofitDependencies.converterMoshi
+
+    // OkHttp
+    implementation okHttpLoggingInterceptorDependency
+
+    // OkHttp Profiler
+    implementation okHttpProfilerDependency
+
+    // Moshi
+    implementation moshiDependencies.moshiKotlin
+    kapt moshiDependencies.moshiKotlinCodeGen
+
+    // Hilt
+    implementation hiltDependencies.hiltAndroid
+    kapt hiltDependencies.hiltAndroidCompiler
+
+    // Timber
+    implementation timberDependency
+
+    // Glide
+    implementation glideDependencies.glide
+    kapt glideDependencies.glideCompiler
+
+    // Firebase
+    implementation platform(firebaseDependencies.bom)
+    implementation firebaseDependencies.analyticsKTX
+    implementation firebaseDependencies.crashlyticsKTX
+    implementation firebaseDependencies.config
+
+    // Unit Test
+    testImplementation jUnitDependency
+    androidTestImplementation androidXTestDependencies.espresso
+    androidTestImplementation androidXTestDependencies.jUnitExt
 }
