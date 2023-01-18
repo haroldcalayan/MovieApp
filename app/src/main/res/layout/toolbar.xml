@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/movie_toolbar"
+        android:id="@+id/movie_toolbar_container"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,7 +17,7 @@
         app:theme="@style/OverflowMenu" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/back_title"
+        android:id="@+id/back_icon"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/spacing_6dp"
@@ -36,7 +36,7 @@
         android:textSize="@dimen/font_16sp"
         android:text="@string/movie_details_toolbar_title"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back_title"
+        app:layout_constraintStart_toEndOf="@+id/back_icon"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

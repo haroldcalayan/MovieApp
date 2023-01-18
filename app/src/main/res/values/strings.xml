@@ -5,4 +5,15 @@
     <string name="main_movie_header">Movie</string>
     <!-- Movie Item Adapter -->
     <string name="movie_duration_and_genre">%1$s - %2$s</string>
+    <string name="adapter_is_on_watch_list">ON MY WATCHLIST</string>
+
+    <!-- Movie Details -->
+    <string name="movie_details_rating_fix">/10</string>
+    <string name="movie_details_toolbar_title">Movies</string>
+    <string name="movie_details_watch_trailer_btn">WATCH TRAILER</string>
+    <string name="movie_details_add_to_watch_list">+ ADD TO WATCHLIST</string>
+    <string name="movie_details_short_description_label">Short Description</string>
+    <string name="movie_details_label">Details</string>
+    <string name="movie_details_genre_label">Details</string>
+    <string name="movie_details_release_date_label">Release Date</string>
 </resources>
