@@ -25,7 +25,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
     }
 
     override fun onItemClick(item: MovieItem) {
-        openMovieDetailsScreen()
+        openMovieDetailsScreen(item.id)
     }
 
     override fun initViews() {
@@ -71,8 +71,13 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
         })
     }
 
-    private fun openMovieDetailsScreen() {
+    private fun openMovieDetailsScreen(movieId: Int) {
         val intent = Intent(this, MovieDetailsActivity::class.java)
+        intent.putExtra(MOVIE_ID, movieId)
         startActivity(intent)
+    }
+
+    companion object {
+        const val MOVIE_ID = "movieId"
     }
 }
