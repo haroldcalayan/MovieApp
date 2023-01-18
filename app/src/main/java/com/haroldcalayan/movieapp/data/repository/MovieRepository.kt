@@ -7,12 +7,19 @@ import java.util.*
 
 interface MovieRepository {
     suspend fun getMovieList() : List<MovieItem>
+
+    suspend fun getMovieDetails(id: Int) : MovieItem?
+
 }
 
 class MovieRepositoryImpl() : BaseRepository(), MovieRepository {
 
     override suspend fun getMovieList(): List<MovieItem> {
         return getDummyMovieList()
+    }
+
+    override suspend fun getMovieDetails(id: Int): MovieItem? {
+        return getDummyMovieList().find { it.id == id }
     }
 
     private fun getDummyMovieList() : List<MovieItem>{
