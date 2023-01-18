@@ -19,6 +19,8 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
 
     private lateinit var movieAdapter: MovieAdapter
 
+    private var isSortedByTitle = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
@@ -32,6 +34,16 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
         super.initViews()
         viewModel.getMovieList()
         observe()
+
+        binding.textviewSort.setOnClickListener {
+            if (!isSortedByTitle) {
+                isSortedByTitle = true
+                viewModel.movieList.value?.let { movieAdapter.sortMovieItemByReleaseDate(it) }
+            } else {
+                isSortedByTitle = false
+                viewModel.movieList.value?.let { movieAdapter.sortMovieItemByTitle(it) }
+            }
+        }
     }
 
     override fun observe() {
