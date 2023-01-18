@@ -1,6 +1,7 @@
 package com.haroldcalayan.movieapp.di
 
 import com.haroldcalayan.movieapp.data.repository.MovieRepository
+import com.haroldcalayan.movieapp.domain.use_case.GetMovieDetailUseCase
 import com.haroldcalayan.movieapp.domain.use_case.GetMovieListUseCase
 import dagger.Module
 import dagger.Provides
@@ -15,4 +16,8 @@ object UseCaseModule {
     @Provides
     @Singleton
     fun provideGetMovieListUseCase(movieRepository: MovieRepository) = GetMovieListUseCase(movieRepository)
+
+    @Provides
+    @Singleton
+    fun provideGetMovieDetailUseCase(movieRepository: MovieRepository) = GetMovieDetailUseCase(movieRepository)
 }
