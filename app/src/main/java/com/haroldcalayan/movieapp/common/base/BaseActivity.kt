@@ -20,6 +20,8 @@ abstract class BaseActivity<T : BaseViewModel, B : ViewDataBinding> : AppCompatA
         binding = DataBindingUtil.setContentView(this, layoutId)
 
         progressDialog = ProgressDialog(this)
+        initViews()
+        observe()
     }
 
     override fun onPause() {
