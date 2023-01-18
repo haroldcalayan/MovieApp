@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.haroldcalayan.movieapp.presentation.main.MainViewModel" />
@@ -17,13 +18,13 @@
             android:id="@+id/textview_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing"
+            android:layout_marginHorizontal="@dimen/spacing_12dp"
+            android:layout_marginVertical="@dimen/spacing_12dp"
+            android:layout_marginBottom="@dimen/spacing_8dp"
             android:text="@string/main_movie_header"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/font_xxl"
+            android:textSize="@dimen/font_16sp"
             android:textStyle="bold"
-            android:layout_marginHorizontal="@dimen/spacing"
-            android:layout_marginVertical="@dimen/spacing"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,13 +32,13 @@
             android:id="@+id/recyclerview_movie_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            tools:listitem="@layout/adapter_movie_item"
-            android:padding="@dimen/spacing_s"
+            android:padding="@dimen/spacing_8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_header"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textview_header"
+            tools:listitem="@layout/adapter_movie_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

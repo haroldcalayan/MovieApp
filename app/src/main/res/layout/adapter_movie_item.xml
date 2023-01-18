@@ -9,24 +9,23 @@
             name="item"
             type="com.haroldcalayan.movieapp.data.model.MovieItem" />
     </data>
-    
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/spacing_s"
-        app:cardElevation="@dimen/spacing_xxs"
-        android:layout_marginVertical="@dimen/spacing"
-        android:layout_marginHorizontal="@dimen/spacing_s">
+        android:layout_marginHorizontal="@dimen/spacing_6dp"
+        app:cardCornerRadius="@dimen/spacing_8dp"
+        app:cardElevation="@dimen/spacing_4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageview_poster"
-                android:layout_width="@dimen/spacing_xxxl"
-                android:layout_height="@dimen/spacing_xxxxl"
-                android:layout_marginVertical="@dimen/spacing_s"
+                android:layout_width="@dimen/spacing_100dp"
+                android:layout_height="@dimen/spacing_120dp"
+                android:layout_marginVertical="@dimen/spacing_8dp"
                 android:src="@{ item.imageId }"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -37,10 +36,10 @@
                 android:id="@+id/textview_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing"
+                android:layout_marginBottom="@dimen/spacing_4dp"
                 android:text="@{ item.title }"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/font_l"
+                android:textSize="@dimen/font_16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -52,14 +51,28 @@
                 android:id="@+id/textview_important_info"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_4dp"
                 android:text="@{@string/movie_duration_and_genre(item.duration, item.genre)}"
-                tools:text="Duration"
-                android:textSize="@dimen/font"
                 android:textColor="@android:color/primary_text_light"
-                android:layout_marginTop="@dimen/spacing_xxs"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintLeft_toLeftOf="@+id/textview_name"
+                app:layout_constraintRight_toRightOf="@+id/textview_name"
                 app:layout_constraintTop_toBottomOf="@+id/textview_name"
-                app:layout_constraintRight_toRightOf="@+id/textview_name"/>
+                tools:text="Duration" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_on_watch_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/adapter_is_on_watch_list"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_14sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageview_poster"
+                app:layout_constraintTop_toBottomOf="@+id/textview_important_info" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
