@@ -9,5 +9,6 @@ data class MovieItem(
     val duration: String,
     val genre: String,
     val releaseDate: String,
-    val trailerLink: String
+    val trailerLink: String,
+    val isOnMyWatchList: Boolean
 )

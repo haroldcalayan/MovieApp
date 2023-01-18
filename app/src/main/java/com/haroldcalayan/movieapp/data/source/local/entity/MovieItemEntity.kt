@@ -15,5 +15,6 @@ data class MovieItemEntity(
     val duration: String? = null,
     val genre: String? = null,
     val releaseDate: String? = null,
-    val trailerLink: String? = null
+    val trailerLink: String? = null,
+    val isOnMyWatchList: Boolean? = null,
 )

@@ -34,7 +34,8 @@ class MovieRepositoryImpl() : BaseRepository(), MovieRepository {
                 duration = "2h 30 min",
                 genre = "Action, Sci-Fi",
                 releaseDate = "3 September 2020",
-                trailerLink = "https://www.youtube.com/watch?v=LdOM0x0XDMo"
+                trailerLink = "https://www.youtube.com/watch?v=LdOM0x0XDMo",
+                isOnMyWatchList = true
             )
         )
         movieList.add(
@@ -47,7 +48,8 @@ class MovieRepositoryImpl() : BaseRepository(), MovieRepository {
                 duration = "1h 57min",
                 genre = "Action, Animation, Adventure",
                 releaseDate = "14 December 2018",
-                trailerLink = "https://www.youtube.com/watch?v=tg52up16eq0"
+                trailerLink = "https://www.youtube.com/watch?v=tg52up16eq0",
+                isOnMyWatchList = false
             )
         )
         movieList.add(
@@ -60,7 +62,8 @@ class MovieRepositoryImpl() : BaseRepository(), MovieRepository {
                 duration = "2h 10min",
                 genre = "Comedy, Crime, Drama",
                 releaseDate = "27 November 2019",
-                trailerLink = "https://www.youtube.com/watch?v=qGqiHJTsRkQ"
+                trailerLink = "https://www.youtube.com/watch?v=qGqiHJTsRkQ",
+                isOnMyWatchList = false
             )
         )
         movieList.add(
@@ -73,7 +76,8 @@ class MovieRepositoryImpl() : BaseRepository(), MovieRepository {
                 duration = "2h 1min",
                 genre = "Action, Adventure, Comedy",
                 releaseDate = "1 August 2014",
-                trailerLink = "https://www.youtube.com/watch?v=d96cjJhvlMA"
+                trailerLink = "https://www.youtube.com/watch?v=d96cjJhvlMA",
+                isOnMyWatchList = true
             )
         )
         movieList.add(
@@ -86,7 +90,8 @@ class MovieRepositoryImpl() : BaseRepository(), MovieRepository {
                 duration = "2h 21min",
                 genre = "Action, Adventure, Sci-Fi",
                 releaseDate = "1 May 2015",
-                trailerLink = "https://www.youtube.com/watch?v=tmeOjFno6Do"
+                trailerLink = "https://www.youtube.com/watch?v=tmeOjFno6Do",
+                isOnMyWatchList = false
             )
         )
 
