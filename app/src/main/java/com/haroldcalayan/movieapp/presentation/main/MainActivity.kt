@@ -34,35 +34,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
         observe()
     }
 
-    /*private fun initMovieList() {
-        val movieList = ArrayList<MovieItem>()
-        movieList.add(
-            MovieItem(
-                title = "Tenet",
-                description = "Armed with only one word, Tenet, and fighting for the survival of the entire world, a\n" +
-                        "Protagonist journeys through a twilight world of international espionage on a mission that will\n" +
-                        "unfold in something beyond real time.",
-                rating = 7.8,
-                duration = "2h 30 min",
-                genre = "Action, Sci-Fi",
-                releaseDate = "3 September 2020",
-                trailerLink = "https://www.youtube.com/watch?v=LdOM0x0XDMo"
-            )
-        )
-        movieList.add(
-            MovieItem(
-                title = "Spider-Man: Into the Spider-Verse",
-                description = "Teen Miles Morales becomes the Spider-Man of his universe, and must join with five\n" +
-                        "spider-powered individuals from other dimensions to stop a threat for all realities.",
-                rating = 8.4,
-                duration = "1h 57min",
-                genre = "Action, Animation, Adventure",
-                releaseDate = "14 December 2018",
-                trailerLink = "https://www.youtube.com/watch?v=tg52up16eq0"
-            )
-        )
-    }*/
-
     override fun observe() {
         super.observe()
         viewModel.movieList.observe(this, {
