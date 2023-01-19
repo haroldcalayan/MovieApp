@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.haroldcalayan.movieapp.R
 import com.haroldcalayan.movieapp.common.base.BaseActivity
-import com.haroldcalayan.movieapp.data.model.MovieItem
+import com.haroldcalayan.movieapp.data.source.local.entity.MovieItemEntity
 import com.haroldcalayan.movieapp.databinding.ActivityMainBinding
 import com.haroldcalayan.movieapp.presentation.movie_details.MovieDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,8 +26,8 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
         initViews()
     }
 
-    override fun onItemClick(item: MovieItem) {
-        openMovieDetailsScreen(item.id)
+    override fun onItemClick(item: MovieItemEntity) {
+        item.id?.let { openMovieDetailsScreen(it) }
     }
 
     override fun initViews() {

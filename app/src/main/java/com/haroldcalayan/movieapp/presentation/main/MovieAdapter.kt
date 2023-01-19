@@ -7,14 +7,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.haroldcalayan.movieapp.BR
 import com.haroldcalayan.movieapp.R
-import com.haroldcalayan.movieapp.data.model.MovieItem
+import com.haroldcalayan.movieapp.data.source.local.entity.MovieItemEntity
 import com.haroldcalayan.movieapp.databinding.AdapterMovieItemBinding
 
-class MovieAdapter(private var data: List<MovieItem>, private var listener: MovieAdapterListener) :
+class MovieAdapter(private var data: List<MovieItemEntity>, private var listener: MovieAdapterListener) :
     RecyclerView.Adapter<MovieAdapter.MovieAdapterAdapterViewHolder>() {
 
     interface MovieAdapterListener {
-        fun onItemClick(item: MovieItem)
+        fun onItemClick(item: MovieItemEntity)
     }
 
     override fun onCreateViewHolder(
@@ -30,14 +30,14 @@ class MovieAdapter(private var data: List<MovieItem>, private var listener: Movi
         return MovieAdapterAdapterViewHolder(binding)
     }
 
-    fun sortMovieItemByTitle(item: List<MovieItem>) {
+    fun sortMovieItemByTitle(item: List<MovieItemEntity>) {
         data = item.sortedBy {
             it.title
         }
         notifyDataSetChanged()
     }
 
-    fun sortMovieItemByReleaseDate(item: List<MovieItem>) {
+    fun sortMovieItemByReleaseDate(item: List<MovieItemEntity>) {
         data = item.sortedBy {
             it.releaseDate
         }
@@ -47,8 +47,10 @@ class MovieAdapter(private var data: List<MovieItem>, private var listener: Movi
     override fun onBindViewHolder(holder: MovieAdapterAdapterViewHolder, position: Int) {
         holder.bind(data[position])
         holder.itemView.setOnClickListener { listener.onItemClick(data[position]) }
-        if (data[position].isOnMyWatchList) {
-            holder.onMyWatchListTextView.visibility = View.VISIBLE
+        data[position].isOnMyWatchList?.let { isOnWatchList ->
+            if(isOnWatchList) {
+                holder.onMyWatchListTextView.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -58,7 +60,7 @@ class MovieAdapter(private var data: List<MovieItem>, private var listener: Movi
 
         val onMyWatchListTextView = binding.textviewOnWatchList
         
-        fun bind(item: MovieItem) {
+        fun bind(item: MovieItemEntity) {
             binding.setVariable(BR.item, item)
             binding.executePendingBindings()
         }

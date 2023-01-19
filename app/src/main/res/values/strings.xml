@@ -3,6 +3,7 @@
 
     <!-- Main -->
     <string name="main_movie_header">Movie</string>
+    <string name="main_movie_sort_label">Sort</string>
     <!-- Movie Item Adapter -->
     <string name="movie_duration_and_genre">%1$s - %2$s</string>
     <string name="adapter_is_on_watch_list">ON MY WATCHLIST</string>
@@ -12,6 +13,7 @@
     <string name="movie_details_toolbar_title">Movies</string>
     <string name="movie_details_watch_trailer_btn">WATCH TRAILER</string>
     <string name="movie_details_add_to_watch_list">+ ADD TO WATCHLIST</string>
+    <string name="movie_details_remove_to_watch_list">REMOVE FROM WATCHLIST</string>
     <string name="movie_details_short_description_label">Short Description</string>
     <string name="movie_details_label">Details</string>
     <string name="movie_details_genre_label">Details</string>
