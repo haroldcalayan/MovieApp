@@ -17,6 +17,9 @@ interface MovieItemDao : BaseDao<MovieItemEntity> {
     @Query("SELECT * FROM $TABLE_NAME ORDER BY id DESC LIMIT 1")
     suspend fun getFirst(): MovieItemEntity?
 
+    @Query("UPDATE $TABLE_NAME SET isOnMyWatchList = :isOnWatchlist WHERE id = :id")
+    suspend fun updateWatchlist(id: Int, isOnWatchlist: Boolean)
+
     @Query("DELETE FROM $TABLE_NAME")
     suspend fun nukeTable()
 
