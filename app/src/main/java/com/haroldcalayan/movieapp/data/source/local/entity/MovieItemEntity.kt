@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "movieItem", indices = [Index(value = ["title"], unique = true)])
 data class MovieItemEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long? = null,
+    val id: Int? = null,
     val title: String? = null,
     val imageId: Int? = null,
     val description: String? = null,
