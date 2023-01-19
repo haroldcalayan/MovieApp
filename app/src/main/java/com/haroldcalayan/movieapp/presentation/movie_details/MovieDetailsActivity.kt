@@ -21,12 +21,23 @@ class MovieDetailsActivity : BaseActivity<MovieDetailsViewModel, ActivityMovieDe
 
         toolbarAction()
 
+        binding.textviewAddToWatchList.setOnClickListener {
+            val message = binding.textviewAddToWatchList.text.toString()
+            if (message == getString(R.string.movie_details_add_to_watch_list)) {
+                binding.textviewAddToWatchList.text =
+                    getString(R.string.movie_details_remove_to_watch_list)
+                viewModel.updateMyWatchlist(movieId, true)
+            } else {
+                binding.textviewAddToWatchList.text =
+                    getString(R.string.movie_details_add_to_watch_list)
+                viewModel.updateMyWatchlist(movieId, false)
+            }
+        }
     }
 
     private fun toolbarAction() {
-        binding.movieToolbarContainer.findViewById<TextView>(R.id.back_icon).setOnClickListener {
-            onBackPressed()
-        }
+        binding.movieToolbarContainer.findViewById<TextView>(R.id.back_icon)
+            .setOnClickListener { onBackPressed() }
     }
 
     override fun observe() {
@@ -34,11 +45,17 @@ class MovieDetailsActivity : BaseActivity<MovieDetailsViewModel, ActivityMovieDe
         viewModel.movieDetail.observe(this, {
             it?.let { movieItem ->
                 binding.textviewDetailsName.text = movieItem.title
-                binding.imageviewDetailsPoster.setImageResource(movieItem.imageId)
+                movieItem.imageId?.let { id ->
+                    binding.imageviewDetailsPoster.setImageResource(id)
+                }
                 binding.textviewRatings.text = movieItem.rating.toString()
                 binding.textviewShortDescription.text = movieItem.description
                 binding.textviewGenre.text = movieItem.genre
                 binding.textviewReleaseDate.text = movieItem.releaseDate
+                if (movieItem.isOnMyWatchList == true) {
+                    binding.textviewAddToWatchList.text =
+                        getString(R.string.movie_details_remove_to_watch_list)
+                }
             }
         })
     }
