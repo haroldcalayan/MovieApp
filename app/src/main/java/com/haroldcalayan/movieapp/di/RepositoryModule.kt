@@ -2,6 +2,7 @@ package com.haroldcalayan.movieapp.di
 
 import com.haroldcalayan.movieapp.data.repository.MovieRepository
 import com.haroldcalayan.movieapp.data.repository.MovieRepositoryImpl
+import com.haroldcalayan.movieapp.data.source.local.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +15,7 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideMovieRepository(): MovieRepository {
-        return MovieRepositoryImpl()
+    fun provideMovieRepository(db: AppDatabase): MovieRepository {
+        return MovieRepositoryImpl(db)
     }
 }

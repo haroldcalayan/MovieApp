@@ -16,7 +16,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_header"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_12dp"
             android:layout_marginVertical="@dimen/spacing_12dp"
@@ -26,6 +26,19 @@
             android:textSize="@dimen/font_16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_12dp"
+            android:layout_marginVertical="@dimen/spacing_12dp"
+            android:text="@string/main_movie_sort_label"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView

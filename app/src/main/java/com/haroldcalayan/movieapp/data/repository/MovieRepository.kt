@@ -2,24 +2,37 @@ package com.haroldcalayan.movieapp.data.repository
 
 import com.haroldcalayan.movieapp.R
 import com.haroldcalayan.movieapp.common.base.BaseRepository
+import com.haroldcalayan.movieapp.data.MovieAppService
 import com.haroldcalayan.movieapp.data.model.MovieItem
-import java.util.*
+import com.haroldcalayan.movieapp.data.source.local.database.AppDatabase
+import com.haroldcalayan.movieapp.data.source.local.entity.MovieItemEntity
+import com.haroldcalayan.movieapp.domain.mapper.toMovieItemEntity
+import java.util.ArrayList
 
 interface MovieRepository {
-    suspend fun getMovieList() : List<MovieItem>
+    suspend fun getMovieList() : List<MovieItemEntity>?
 
-    suspend fun getMovieDetails(id: Int) : MovieItem?
+    suspend fun getMovieDetails(id: Int) : MovieItemEntity?
+
+    suspend fun updateWatchlist(id: Int, isOnWatchlist: Boolean)
 
 }
 
-class MovieRepositoryImpl() : BaseRepository(), MovieRepository {
+class MovieRepositoryImpl(private val db: AppDatabase) : BaseRepository(), MovieRepository {
 
-    override suspend fun getMovieList(): List<MovieItem> {
-        return getDummyMovieList()
+    override suspend fun getMovieList(): List<MovieItemEntity>? {
+        getDummyMovieList().forEach {
+            db.movieItemDao().insert(it.toMovieItemEntity())
+        }
+        return db.movieItemDao().all()?.toList()
     }
 
-    override suspend fun getMovieDetails(id: Int): MovieItem? {
-        return getDummyMovieList().find { it.id == id }
+    override suspend fun getMovieDetails(id: Int): MovieItemEntity? {
+        return db.movieItemDao().get(id)
+    }
+
+    override suspend fun updateWatchlist(id: Int, isOnWatchlist: Boolean) {
+        return db.movieItemDao().updateWatchlist(id, isOnWatchlist)
     }
 
     private fun getDummyMovieList() : List<MovieItem>{
@@ -35,7 +48,7 @@ class MovieRepositoryImpl() : BaseRepository(), MovieRepository {
                 genre = "Action, Sci-Fi",
                 releaseDate = "3 September 2020",
                 trailerLink = "https://www.youtube.com/watch?v=LdOM0x0XDMo",
-                isOnMyWatchList = true
+                isOnMyWatchList = false
             )
         )
         movieList.add(
@@ -77,7 +90,7 @@ class MovieRepositoryImpl() : BaseRepository(), MovieRepository {
                 genre = "Action, Adventure, Comedy",
                 releaseDate = "1 August 2014",
                 trailerLink = "https://www.youtube.com/watch?v=d96cjJhvlMA",
-                isOnMyWatchList = true
+                isOnMyWatchList = false
             )
         )
         movieList.add(
@@ -97,4 +110,6 @@ class MovieRepositoryImpl() : BaseRepository(), MovieRepository {
 
         return movieList
     }
+
+
 }
