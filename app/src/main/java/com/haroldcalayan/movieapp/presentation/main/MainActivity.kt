@@ -21,11 +21,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
 
     private var isSortedByTitle = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initViews()
-    }
-
     override fun onItemClick(item: MovieItemEntity) {
         item.id?.let { openMovieDetailsScreen(it) }
     }
@@ -44,6 +39,11 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
                 viewModel.movieList.value?.let { movieAdapter.sortMovieItemByTitle(it) }
             }
         }
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        viewModel.getMovieList()
     }
 
     override fun observe() {

@@ -21,8 +21,10 @@ interface MovieRepository {
 class MovieRepositoryImpl(private val db: AppDatabase) : BaseRepository(), MovieRepository {
 
     override suspend fun getMovieList(): List<MovieItemEntity>? {
-        getDummyMovieList().forEach {
-            db.movieItemDao().insert(it.toMovieItemEntity())
+        if (db.movieItemDao().all().isNullOrEmpty()) {
+            getDummyMovieList().forEach {
+                db.movieItemDao().insert(it.toMovieItemEntity())
+            }
         }
         return db.movieItemDao().all()?.toList()
     }
